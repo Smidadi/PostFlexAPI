@@ -5,10 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+const post_it = require("./routes/post_it");
+const colonne = require("./routes/colonne");
+
 var indexRouter = require('./routes/index');
 var testAPIRouter = require('./routes/testAPI');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,8 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/testAPI', testAPIRouter);
+//app.use('/', indexRouter);
+//app.use('/testAPI', testAPIRouter);
+app.use("/post_it",post_it);
+app.use("/colonne",colonne);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,5 +45,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(3000, () => console.log("Listening on 3000"));
 
 module.exports = app;
