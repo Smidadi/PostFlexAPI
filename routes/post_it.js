@@ -50,7 +50,7 @@ router.use(cors());
         break;
     }
     try {
-      const response = await pool.query(qry,[req.params.id, req.body.data]);
+      const response = await pool.query(qry,[req.params.id, req.params.data]);
       res.end();
     } catch (error) {
       console.error(error.message);
