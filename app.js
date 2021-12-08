@@ -7,6 +7,7 @@ var cors = require('cors');
 
 const post_it = require("./routes/post_it");
 const colonne = require("./routes/colonne");
+const sprint = require("./routes/sprint");
 
 var indexRouter = require('./routes/index');
 var testAPIRouter = require('./routes/testAPI');
@@ -29,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/testAPI', testAPIRouter);
 app.use("/post_it",post_it);
 app.use("/colonne",colonne);
+app.use("/sprint",sprint);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
