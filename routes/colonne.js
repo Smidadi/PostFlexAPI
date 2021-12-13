@@ -19,9 +19,9 @@ router.get('/all/:id_sprint', async (req,res) => {
 
 
 //add a new colonne in kanban
-router.post('/new/:id_sprint/:titre', async (req,res) => {
+router.post('/new/:id_sprint/:id/:titre', async (req,res) => {
     try {
-        const response = await pool.query("INSERT INTO colonne(titre,id_sprint) VALUES ($1,$2);",[req.params.titre,req.params.id_sprint]);
+        const response = await pool.query("INSERT INTO colonne(titre,id_sprint,id) VALUES ($1,$2,$3);",[req.params.titre,req.params.id_sprint,req.params.id]);
         res.end();
     } catch (error) {
         console.error(error);
