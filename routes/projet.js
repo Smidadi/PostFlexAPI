@@ -29,7 +29,7 @@ router.get("/all_users_from_project/:id_projet", async (req,res) => {
 router.post("/add_new/:id_projet/:id_user/:name", async (req, res) => {
     try {
         const response = await pool.query("INSERT INTO projets_with_users(id_projet,id_user) VALUES ($1,$2);",[req.params.id_projet,req.params.id_user]);
-        const reponse2 = await pool.query("INSERT INTO projets(id,name) VALUES ($1,$2);",[req.params.id_projet,req.params.name]);
+        const reponse2 = await pool.query("INSERT INTO projet(id,name) VALUES ($1,$2);",[req.params.id_projet,req.params.name]);
         res.end();
     } catch (error) {
         console.error(error);

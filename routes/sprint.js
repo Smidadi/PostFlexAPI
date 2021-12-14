@@ -25,9 +25,10 @@ router.get("/:id", async (req,res) => {
     }
 });
 
-router.post("/new/:id/:date", async (req,res) => {
+router.post("/new/:id/:date/:id_projet/:titre", async (req,res) => {
     try {
-        const response = await pool.query("INSERT INTO sprint(id,date_debut) VALUES ($1,$2);",[req.params.id,req.params.date]);
+        const response = await pool.query("INSERT INTO sprint(id,date_debut,id_projet,titre) VALUES ($1,$2,$3,$4);",
+                    [req.params.id,req.params.date,req.params.id_projet,req.params.titre]);
         res.end();
     } catch (error) {
         console.error(error);

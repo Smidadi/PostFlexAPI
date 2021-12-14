@@ -2,6 +2,8 @@ CREATE DATABASE PostFlex;
 
 CREATE TABLE sprint (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
+    id_projet VARCHAR(255),
+    titre VARCHAR(255),
     date_debut DATE,
     date_fin DATE
 );
@@ -24,8 +26,8 @@ CREATE TABLE post_it (
 );
 
 CREATE TABLE projet (
-    name VARCHAR(255) NOT NULL,
-    id INT NOT NULL PRIMARY KEY
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE projets_with_users (
@@ -35,6 +37,6 @@ CREATE TABLE projets_with_users (
 
 CREATE TABLE users (
     name VARCHAR(255) NOT NULL,
-    id INT NOT NULL PRIMARY KEY,
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
     mdp VARCHAR(255) NOT NULL
 );

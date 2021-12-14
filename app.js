@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/post_it",post_it);
 app.use("/colonne",colonne);
 app.use("/sprint",sprint);
-app.use('/user/',user);
+app.use('/user',user);
 app.use("/projet",projet);
 
 
