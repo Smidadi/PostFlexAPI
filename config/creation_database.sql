@@ -1,7 +1,7 @@
 CREATE DATABASE PostFlex;
 
 CREATE TABLE sprint (
-    id INT PRIMARY KEY NOT NULL PRIMARY KEY,
+    id INT NOT NULL PRIMARY KEY,
     date_debut DATE,
     date_fin DATE
 );
@@ -10,11 +10,11 @@ CREATE TABLE colonne (
     id INT NOT NULL PRIMARY KEY,
     titre VARCHAR(255) NOT NULL,
     id_sprint INT NOT NULL,
-    max_tache INT NOT NULL DEFAULT 10,
+    max_tache INT NOT NULL DEFAULT 10
 );
 
 CREATE TABLE post_it (
-    id INT PRIMARY KEY NOT NULL PRIMARY KEY,
+    id INT NOT NULL PRIMARY KEY,
     couleur VARCHAR(7),
     description VARCHAR(255),
     date_creation DATE,

@@ -9,9 +9,10 @@ router.use(cors());
 /**
  * Ajoute un nouveau post_it dans la base de données
  */
- router.post('/new/:id', async (req,res) => {
+ router.post('/new/:id/:date/:estimation_temp/:description/:couleur', async (req,res) => {
     try{
-        const response = await pool.query('INSERT INTO post_it(id,date_creation,estimation_temp) VALUES ($1,$2,$3);',[req.body.id, req.body.date,req.body.estimation_temps]);
+        const response = await pool.query('INSERT INTO post_it(id,date_creation,estimation_temp,description,couleur) VALUES ($1,$2,$3,$4,$5);',
+                          [req.params.id, req.params.date,req.params.estimation_temp, req.params.description, req.params.couleur]);
         res.end();
     }catch(error){
       console.log(error.message);
@@ -34,6 +35,9 @@ router.use(cors());
     const colonne = req.params.colonne;
     const query = "";
     switch (colonne) {
+      case "titre":
+        qry = "UPDATE post_it SET titre = ($2) WHERE id = ($1);";
+        break;
       case "description":
         qry = "UPDATE post_it SET description = ($2) WHERE id = ($1);";
         break;
