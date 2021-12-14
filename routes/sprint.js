@@ -7,6 +7,15 @@ pool.connect();
 
 router.use(cors());
 
+
+router.get("/all", async (req,res) => {
+    try {
+        const response = await pool.query("SELECT * FROM sprint;");
+        res.send(response.rows);
+    } catch (error) {
+        console.error(error);
+    }
+})
 router.get("/:id", async (req,res) => {
     try {
         const response = await pool.query("SELECT * FROM sprint WHERE id = ($1);",[req.params.id]);
@@ -18,7 +27,7 @@ router.get("/:id", async (req,res) => {
 
 router.post("/new/:id/:date", async (req,res) => {
     try {
-        const response = await pool.query("INSERT INTO post_it(id,date_debut) VALUES ($1,$2);",[req.params.id,req.params.date]);
+        const response = await pool.query("INSERT INTO sprint(id,date_debut) VALUES ($1,$2);",[req.params.id,req.params.date]);
         res.end();
     } catch (error) {
         console.error(error);
