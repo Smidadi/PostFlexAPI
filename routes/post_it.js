@@ -52,7 +52,7 @@ router.use(cors());
         qry = "UPDATE post_it SET date_creation = ($2) WHERE id = ($1);";
         break;
       case "estimation_temps":
-        qry = "UPDATE post_it SET date_creation = ($2) WHERE id = ($1);";
+        qry = "UPDATE post_it SET estimation_temps = ($2) WHERE id = ($1);";
         break;
       default:
         break;
@@ -65,5 +65,14 @@ router.use(cors());
     }
   
   });
+
+  router.delete("/delete/:id", async (req,res) => {
+    try {
+      pool.query("DELETE FROM post_it WHERE id = ($1);",[req.params.id]);
+      res.end();
+    } catch (error) {
+      console.error(error);
+    }
+  })
 
 module.exports = router;
