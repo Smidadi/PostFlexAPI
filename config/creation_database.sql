@@ -16,6 +16,7 @@ CREATE TABLE colonne (
 CREATE TABLE post_it (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
     id_colonne VARCHAR(255) NOT NULL,
+    titre VARCHAR(255),
     couleur VARCHAR(255),
     description VARCHAR(255),
     date_creation DATE,

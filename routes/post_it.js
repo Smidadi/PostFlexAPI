@@ -9,10 +9,11 @@ router.use(cors());
 /**
  * Ajoute un nouveau post_it dans la base de données
  */
- router.post('/new/:id/:date/:estimation_temp/:description/:couleur', async (req,res) => {
+ router.post('/new/:id/:id_colonne/:date/:titre/:estimation_temp/:description/:couleur', async (req,res) => {
     try{
-        const response = await pool.query('INSERT INTO post_it(id,date_creation,estimation_temp,description,couleur) VALUES ($1,$2,$3,$4,$5);',
-                          [req.params.id, req.params.date,req.params.estimation_temp, req.params.description, req.params.couleur]);
+        const response = await pool.query('INSERT INTO post_it(id,id_colonne,date_creation,titre,estimation_temp,description,couleur) VALUES ($1,$2,$3,$4,$5,$6,$7);',
+                          [req.params.id, req.params.id_colonne, req.params.date, req.params.titre,
+                            req.params.estimation_temp, req.params.description, req.params.couleur]);
         res.end();
     }catch(error){
       console.log(error.message);
