@@ -29,9 +29,9 @@ router.post('/new/:id_sprint/:id/:titre', async (req,res) => {
 });
 
 //chnage max tache
-router.put('/change_max/:id_sprint/:titre/:max', async (req,res) => {
+router.put('/change_max/:id_column/:max', async (req,res) => {
     try {
-        const response = await pool.query("UPDATE colonne SET max_tache = ($2) WHERE titre = ($1) AND id_sprint = ($3);",[req.params.titre,req.params.max,req.params.id_sprint]);
+        const response = await pool.query("UPDATE colonne SET max_tache = ($2) WHERE titre = ($1) AND id = ($3);",[req.params.titre,req.params.max,req.params.id_column]);
         res.end();
     } catch (error) {
         console.error(error);
@@ -40,9 +40,9 @@ router.put('/change_max/:id_sprint/:titre/:max', async (req,res) => {
 
 
 //change titre
-router.put('/change_titre/:id_sprint/:titre/:new_titre', async (req,res) => {
+router.put('/change_titre/:id/:new_titre', async (req,res) => {
     try {
-        const response = await pool.query("UPDATE colonne SET titre = ($3) WHERE id_sprint = ($1) AND titre = ($2);",[req.params.id_sprint,req.params.titre,req.params.new_titre]);
+        const response = await pool.query("UPDATE colonne SET titre = ($2) WHERE id = ($1);",[req.params.id,req.params.new_titre]);
         res.end();
     } catch (error) {
         console.error(error);
