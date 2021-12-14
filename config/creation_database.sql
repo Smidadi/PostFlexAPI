@@ -9,7 +9,7 @@ CREATE TABLE sprint (
 CREATE TABLE colonne (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
     titre VARCHAR(255) NOT NULL,
-    id_sprint INT NOT NULL,
+    id_sprint VARCHAR(255) NOT NULL,
     max_tache INT NOT NULL DEFAULT 10
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE post_it (
     titre VARCHAR(255),
     couleur VARCHAR(255),
     description VARCHAR(255),
-    date_creation DATE,
+    date_creation VARCHAR(255),
     estimation_temp INT NOT NULL
 );
 

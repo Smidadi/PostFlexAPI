@@ -36,6 +36,9 @@ router.use(cors());
     const colonne = req.params.colonne;
     const query = "";
     switch (colonne) {
+      case "id_colonne":
+        qry = "UPDATE post_it SET id_colonne = ($2) WHERE id = ($1);";
+        break;
       case "titre":
         qry = "UPDATE post_it SET titre = ($2) WHERE id = ($1);";
         break;
